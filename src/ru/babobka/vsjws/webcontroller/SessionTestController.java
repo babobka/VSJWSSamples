@@ -20,7 +20,7 @@ public class SessionTestController extends WebController {
 	public HttpResponse onGet(HttpRequest request) throws IOException,
 			URISyntaxException {
 		String action = request.getUrlParam("action");
-		if (action != null && action.equals("list")) {
+		if (action.equals("list")) {
 			return HttpResponse.textResponse(request.getSession().toString(),
 					ContentType.PLAIN);
 		} else {
@@ -33,7 +33,7 @@ public class SessionTestController extends WebController {
 	@Override
 	public HttpResponse onPost(HttpRequest request) {
 		String key = request.getParam("key"), value = request.getParam("value");
-		if (key != null && value != null) {
+		if (!key.isEmpty() && !value.isEmpty()) {
 			request.getSession().put(key, value);
 			return HttpResponse.textResponse(request.getSession().toString(),
 					ContentType.PLAIN);

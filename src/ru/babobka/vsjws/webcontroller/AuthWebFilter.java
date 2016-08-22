@@ -23,8 +23,7 @@ public class AuthWebFilter implements WebFilter {
 	public HttpResponse onFilter(HttpRequest request) {
 		String login = request.getHeader("X-Login");
 		String password = request.getHeader("X-Password");		
-		if ((login == null || password == null)
-				|| (!login.equals(LOGIN) || !password.equals(PASSWORD))) {
+		if ((!login.equals(LOGIN) || !password.equals(PASSWORD))) {
 			// Show error response
 			return HttpResponse.textResponse("Bad login/password combination",
 					ResponseCode.UNAUTHORIZED,

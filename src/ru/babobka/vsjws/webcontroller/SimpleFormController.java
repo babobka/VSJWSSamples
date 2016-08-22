@@ -27,9 +27,9 @@ public class SimpleFormController extends WebController {
 
 	@Override
 	public HttpResponse onPost(HttpRequest request) {
-		if (request.getParam("first_name") != null
-				&& request.getParam("second_name") != null
-				&& request.getParam("password") != null) {
+		if (!request.getParam("first_name").isEmpty()
+				&& !request.getParam("second_name").isEmpty()
+				&& !request.getParam("password").isEmpty()) {
 			return HttpResponse.textResponse(SUCCESS_RESPONSE,
 					ContentType.PLAIN);
 		} else {
