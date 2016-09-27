@@ -19,7 +19,7 @@ public class SessionTestController extends WebController {
 	public HttpResponse onGet(HttpRequest request) throws IOException, URISyntaxException {
 		String action = request.getUrlParam("action");
 		if (action.equals("list")) {
-			return HttpResponse.textResponse(request.getSession().toString());
+			return HttpResponse.textResponse(request.getSession());
 		} else {
 			return HttpResponse.fileResponse(new File("web-content/session.html"));
 		}
@@ -31,7 +31,7 @@ public class SessionTestController extends WebController {
 		String key = request.getParam("key"), value = request.getParam("value");
 		if (!key.isEmpty() && !value.isEmpty()) {
 			request.getSession().put(key, value);
-			return HttpResponse.textResponse(request.getSession().toString());
+			return HttpResponse.textResponse(request.getSession());
 
 		} else {
 			return HttpResponse.textResponse(EMPTY_FIELDS_RESPONSE, ResponseCode.BAD_REQUEST);

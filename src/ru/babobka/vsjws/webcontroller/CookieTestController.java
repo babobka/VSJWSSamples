@@ -17,14 +17,12 @@ public class CookieTestController extends WebController {
 	private static final String EMPTY_FIELDS_RESPONSE = "All fields should be filled.";
 
 	@Override
-	public HttpResponse onGet(HttpRequest request) throws IOException,
-			URISyntaxException {
+	public HttpResponse onGet(HttpRequest request) throws IOException, URISyntaxException {
 		String action = request.getUrlParam("action");
 		if (action.equals("list")) {
-			return HttpResponse.textResponse(request.getCookies().toString());
+			return HttpResponse.textResponse(request.getCookies());
 		} else {
-			return HttpResponse.fileResponse(new File(
-					"web-content/cookies.html"));
+			return HttpResponse.fileResponse(new File("web-content/cookies.html"));
 		}
 	}
 
@@ -35,13 +33,11 @@ public class CookieTestController extends WebController {
 			HashMap<String, String> cookieMap = new HashMap<>();
 			cookieMap.putAll(request.getCookies());
 			cookieMap.put(key, value);
-			HttpResponse httpResponse = HttpResponse.textResponse(
-					cookieMap.toString());
+			HttpResponse httpResponse = HttpResponse.textResponse(cookieMap.toString());
 			httpResponse.addCookie(key, value);
 			return httpResponse;
 		} else {
-			return HttpResponse.textResponse(EMPTY_FIELDS_RESPONSE,
-					ResponseCode.BAD_REQUEST);
+			return HttpResponse.textResponse(EMPTY_FIELDS_RESPONSE, ResponseCode.BAD_REQUEST);
 		}
 	}
 }

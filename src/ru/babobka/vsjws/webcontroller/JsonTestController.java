@@ -1,6 +1,5 @@
 package ru.babobka.vsjws.webcontroller;
 
-import ru.babobka.vsjws.constant.ContentType;
 import ru.babobka.vsjws.model.HttpRequest;
 import ru.babobka.vsjws.model.HttpResponse;
 
@@ -14,6 +13,6 @@ public class JsonTestController extends WebController {
 	@Override
 	public HttpResponse onGet(HttpRequest request) {
 
-		return HttpResponse.textResponse(JSON_RESPONSE, ContentType.JSON);
+		return HttpResponse.jsonResponse(JSON_RESPONSE);
 	}
 }
