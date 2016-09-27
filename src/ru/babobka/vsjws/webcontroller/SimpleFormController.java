@@ -1,6 +1,6 @@
 package ru.babobka.vsjws.webcontroller;
 
-import ru.babobka.vsjws.constant.ContentType;
+
 import ru.babobka.vsjws.model.HttpRequest;
 import ru.babobka.vsjws.model.HttpResponse;
 import ru.babobka.vsjws.model.HttpResponse.ResponseCode;
@@ -19,22 +19,17 @@ public class SimpleFormController extends WebController {
 	private static final String EMPTY_FIELDS_RESPONSE = "All fields should be filled.";
 
 	@Override
-	public HttpResponse onGet(HttpRequest request) throws IOException,
-			URISyntaxException {
-		return HttpResponse
-				.fileResponse(new File("web-content/simpleForm.html"));
+	public HttpResponse onGet(HttpRequest request) throws IOException, URISyntaxException {
+		return HttpResponse.fileResponse(new File("web-content/simpleForm.html"));
 	}
 
 	@Override
 	public HttpResponse onPost(HttpRequest request) {
-		if (!request.getParam("first_name").isEmpty()
-				&& !request.getParam("second_name").isEmpty()
+		if (!request.getParam("first_name").isEmpty() && !request.getParam("second_name").isEmpty()
 				&& !request.getParam("password").isEmpty()) {
-			return HttpResponse.textResponse(SUCCESS_RESPONSE,
-					ContentType.PLAIN);
+			return HttpResponse.textResponse(SUCCESS_RESPONSE);
 		} else {
-			return HttpResponse.textResponse(EMPTY_FIELDS_RESPONSE,
-					ResponseCode.BAD_REQUEST, ContentType.PLAIN);
+			return HttpResponse.textResponse(EMPTY_FIELDS_RESPONSE, ResponseCode.BAD_REQUEST);
 		}
 	}
 }

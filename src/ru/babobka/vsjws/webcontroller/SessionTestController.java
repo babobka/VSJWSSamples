@@ -1,6 +1,5 @@
 package ru.babobka.vsjws.webcontroller;
 
-import ru.babobka.vsjws.constant.ContentType;
 import ru.babobka.vsjws.model.HttpRequest;
 import ru.babobka.vsjws.model.HttpResponse;
 import ru.babobka.vsjws.model.HttpResponse.ResponseCode;
@@ -17,15 +16,12 @@ public class SessionTestController extends WebController {
 	private static final String EMPTY_FIELDS_RESPONSE = "All fields should be filled.";
 
 	@Override
-	public HttpResponse onGet(HttpRequest request) throws IOException,
-			URISyntaxException {
+	public HttpResponse onGet(HttpRequest request) throws IOException, URISyntaxException {
 		String action = request.getUrlParam("action");
 		if (action.equals("list")) {
-			return HttpResponse.textResponse(request.getSession().toString(),
-					ContentType.PLAIN);
+			return HttpResponse.textResponse(request.getSession().toString());
 		} else {
-			return HttpResponse.fileResponse(new File(
-					"web-content/session.html"));
+			return HttpResponse.fileResponse(new File("web-content/session.html"));
 		}
 
 	}
@@ -35,12 +31,10 @@ public class SessionTestController extends WebController {
 		String key = request.getParam("key"), value = request.getParam("value");
 		if (!key.isEmpty() && !value.isEmpty()) {
 			request.getSession().put(key, value);
-			return HttpResponse.textResponse(request.getSession().toString(),
-					ContentType.PLAIN);
+			return HttpResponse.textResponse(request.getSession().toString());
 
 		} else {
-			return HttpResponse.textResponse(EMPTY_FIELDS_RESPONSE,
-					ResponseCode.BAD_REQUEST, ContentType.PLAIN);
+			return HttpResponse.textResponse(EMPTY_FIELDS_RESPONSE, ResponseCode.BAD_REQUEST);
 		}
 	}
 

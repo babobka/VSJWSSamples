@@ -1,6 +1,5 @@
 package ru.babobka.vsjws.webcontroller;
 
-import ru.babobka.vsjws.constant.ContentType;
 import ru.babobka.vsjws.model.HttpRequest;
 import ru.babobka.vsjws.model.HttpResponse;
 import ru.babobka.vsjws.model.HttpResponse.ResponseCode;
@@ -22,8 +21,7 @@ public class CookieTestController extends WebController {
 			URISyntaxException {
 		String action = request.getUrlParam("action");
 		if (action.equals("list")) {
-			return HttpResponse.textResponse(request.getCookies().toString(),
-					ContentType.PLAIN);
+			return HttpResponse.textResponse(request.getCookies().toString());
 		} else {
 			return HttpResponse.fileResponse(new File(
 					"web-content/cookies.html"));
@@ -38,12 +36,12 @@ public class CookieTestController extends WebController {
 			cookieMap.putAll(request.getCookies());
 			cookieMap.put(key, value);
 			HttpResponse httpResponse = HttpResponse.textResponse(
-					cookieMap.toString(), ContentType.PLAIN);
+					cookieMap.toString());
 			httpResponse.addCookie(key, value);
 			return httpResponse;
 		} else {
 			return HttpResponse.textResponse(EMPTY_FIELDS_RESPONSE,
-					ResponseCode.BAD_REQUEST, ContentType.PLAIN);
+					ResponseCode.BAD_REQUEST);
 		}
 	}
 }

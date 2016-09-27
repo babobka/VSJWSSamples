@@ -9,28 +9,11 @@ import ru.babobka.vsjws.model.HttpResponse;
  */
 public class JsonTestController extends WebController {
 
-	private static final String JSON_RESPONSE = "{\n"
-			+ "    \"glossary\": {\n"
-			+ "        \"title\": \"example glossary\",\n"
-			+ "\t\t\"GlossDiv\": {\n"
-			+ "            \"title\": \"S\",\n"
-			+ "\t\t\t\"GlossList\": {\n"
-			+ "                \"GlossEntry\": {\n"
-			+ "                    \"ID\": \"SGML\",\n"
-			+ "\t\t\t\t\t\"SortAs\": \"SGML\",\n"
-			+ "\t\t\t\t\t\"GlossTerm\": \"Standard Generalized Markup Language\",\n"
-			+ "\t\t\t\t\t\"Acronym\": \"SGML\",\n"
-			+ "\t\t\t\t\t\"Abbrev\": \"ISO 8879:1986\",\n"
-			+ "\t\t\t\t\t\"GlossDef\": {\n"
-			+ "                        \"para\": \"A meta-markup language, used to create markup languages such as DocBook.\",\n"
-			+ "\t\t\t\t\t\t\"GlossSeeAlso\": [\"GML\", \"XML\"]\n"
-			+ "                    },\n"
-			+ "\t\t\t\t\t\"GlossSee\": \"markup\"\n" + "                }\n"
-			+ "            }\n" + "        }\n" + "    }\n" + "}";
+	private static final String JSON_RESPONSE = "{\"id\": 1, \"name\": \"A green door\",  \"price\": 12.50, \"tags\": [\"home\", \"green\"]}";
 
 	@Override
 	public HttpResponse onGet(HttpRequest request) {
 
-		return HttpResponse.textResponse(JSON_RESPONSE,ContentType.JSON);
+		return HttpResponse.textResponse(JSON_RESPONSE, ContentType.JSON);
 	}
 }

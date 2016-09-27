@@ -8,6 +8,7 @@ import ru.babobka.vsjws.webcontroller.HeavyRequestController;
 import ru.babobka.vsjws.webcontroller.InternalErrorController;
 import ru.babobka.vsjws.webcontroller.JsonTestController;
 import ru.babobka.vsjws.webcontroller.MainPageController;
+import ru.babobka.vsjws.webcontroller.RedirectTestController;
 import ru.babobka.vsjws.webcontroller.SessionTestController;
 import ru.babobka.vsjws.webcontroller.SimpleFormController;
 import ru.babobka.vsjws.webcontroller.XmlTestController;
@@ -26,8 +27,7 @@ public class Main {
 	private static final String LOG_FOLDER = "server_log";
 
 	public static void main(String[] args) throws IOException {
-		WebServer webServer = new WebServer(SERVER_NAME, PORT,
-				SESSION_TIMEOUT_SECS, WEB_CONTENT_FOLDER, LOG_FOLDER);
+		WebServer webServer = new WebServer(SERVER_NAME, PORT, SESSION_TIMEOUT_SECS, WEB_CONTENT_FOLDER, LOG_FOLDER);
 		// Adding controllers for a specified URLs
 		webServer.addController("json", new JsonTestController());
 		webServer.addController("xml", new XmlTestController());
@@ -37,6 +37,7 @@ public class Main {
 		webServer.addController("simpleForm", new SimpleFormController());
 		webServer.addController("xslt", new XsltTestController());
 		webServer.addController("cookies", new CookieTestController());
+		webServer.addController("redirect", new RedirectTestController());
 		webServer.addController("", new MainPageController());
 		webServer.run();
 	}
