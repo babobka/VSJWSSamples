@@ -1,11 +1,9 @@
 package ru.babobka.vsjws.webcontroller;
 
-
 import ru.babobka.vsjws.model.HttpRequest;
 import ru.babobka.vsjws.model.HttpResponse;
 import ru.babobka.vsjws.model.HttpResponse.ResponseCode;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
@@ -20,7 +18,7 @@ public class SimpleFormController extends WebController {
 
 	@Override
 	public HttpResponse onGet(HttpRequest request) throws IOException, URISyntaxException {
-		return HttpResponse.fileResponse(new File("web-content/simpleForm.html"));
+		return HttpResponse.resourceResponse("web-content/simpleForm.html");
 	}
 
 	@Override

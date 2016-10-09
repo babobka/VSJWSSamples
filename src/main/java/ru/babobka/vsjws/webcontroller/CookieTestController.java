@@ -4,7 +4,6 @@ import ru.babobka.vsjws.model.HttpRequest;
 import ru.babobka.vsjws.model.HttpResponse;
 import ru.babobka.vsjws.model.HttpResponse.ResponseCode;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -22,7 +21,7 @@ public class CookieTestController extends WebController {
 		if (action.equals("list")) {
 			return HttpResponse.textResponse(request.getCookies());
 		} else {
-			return HttpResponse.fileResponse(new File("web-content/cookies.html"));
+			return HttpResponse.resourceResponse("web-content/cookies.html");
 		}
 	}
 

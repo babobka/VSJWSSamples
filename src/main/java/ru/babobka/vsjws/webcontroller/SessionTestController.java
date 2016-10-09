@@ -4,7 +4,6 @@ import ru.babobka.vsjws.model.HttpRequest;
 import ru.babobka.vsjws.model.HttpResponse;
 import ru.babobka.vsjws.model.HttpResponse.ResponseCode;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
@@ -21,7 +20,7 @@ public class SessionTestController extends WebController {
 		if (action.equals("list")) {
 			return HttpResponse.textResponse(request.getSession());
 		} else {
-			return HttpResponse.fileResponse(new File("web-content/session.html"));
+			return HttpResponse.resourceResponse("web-content/session.html");
 		}
 
 	}

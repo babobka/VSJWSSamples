@@ -2,7 +2,6 @@ package ru.babobka.vsjws.webcontroller;
 
 import java.io.IOException;
 
-import javax.xml.transform.stream.StreamSource;
 
 import ru.babobka.vsjws.model.HttpRequest;
 import ru.babobka.vsjws.model.HttpResponse;
@@ -14,7 +13,7 @@ public class XsltTestController extends WebController {
 	@Override
 	public HttpResponse onGet(HttpRequest request) throws IOException {
 
-		return HttpResponse.xsltResponse(XML, new StreamSource("web-content/xslExample.xsl"));
+		return HttpResponse.xsltResponse(XML, "web-content/xslExample.xsl");
 	}
 
 }

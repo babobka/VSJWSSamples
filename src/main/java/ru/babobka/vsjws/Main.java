@@ -2,8 +2,8 @@ package ru.babobka.vsjws;
 
 import java.io.IOException;
 
-
 import ru.babobka.vsjws.webserver.WebServer;
+import ru.babobka.vsjws.webserver.WebServerExecutor;
 import ru.babobka.vsjws.webcontroller.CookieTestController;
 import ru.babobka.vsjws.webcontroller.HeavyRequestController;
 import ru.babobka.vsjws.webcontroller.InternalErrorController;
@@ -21,15 +21,13 @@ public class Main {
 
 	private static final int SESSION_TIMEOUT_SECS = 15 * 60;
 
-	private static final String WEB_CONTENT_FOLDER = "web-content";
-
 	private static final String SERVER_NAME = "Sample server";
 
 	private static final String LOG_FOLDER = "server_log";
 
 	public static void main(String[] args) throws IOException {
-		
-		WebServer webServer = new WebServer(SERVER_NAME, PORT, SESSION_TIMEOUT_SECS, WEB_CONTENT_FOLDER, LOG_FOLDER);
+
+		WebServer webServer = new WebServer(SERVER_NAME, PORT, SESSION_TIMEOUT_SECS, LOG_FOLDER);
 		// Adding controllers for a specified URLs
 		webServer.addController("json", new JsonTestController());
 		webServer.addController("xml", new XmlTestController());
@@ -41,7 +39,8 @@ public class Main {
 		webServer.addController("cookies", new CookieTestController());
 		webServer.addController("redirect", new RedirectTestController());
 		webServer.addController("", new MainPageController());
-		webServer.run();
+		WebServerExecutor executor = new WebServerExecutor(webServer);
+		executor.run();
 	}
 
 }
