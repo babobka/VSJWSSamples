@@ -3,7 +3,6 @@ package ru.babobka.vsjws;
 import java.io.IOException;
 
 import ru.babobka.vsjws.webserver.WebServer;
-import ru.babobka.vsjws.webserver.WebServerExecutor;
 import ru.babobka.vsjws.webcontroller.CookieTestController;
 import ru.babobka.vsjws.webcontroller.HeavyRequestController;
 import ru.babobka.vsjws.webcontroller.InternalErrorController;
@@ -39,8 +38,8 @@ public class Main {
 		webServer.addController("cookies", new CookieTestController());
 		webServer.addController("redirect", new RedirectTestController());
 		webServer.addController("", new MainPageController());
-		WebServerExecutor executor = new WebServerExecutor(webServer);
-		executor.run();
+		webServer.start();
+
 	}
 
 }
