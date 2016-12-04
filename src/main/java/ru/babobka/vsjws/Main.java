@@ -24,9 +24,11 @@ public class Main {
 
 	private static final String LOG_FOLDER = "server_log";
 
+	private static final boolean DEBUG_MODE = true;
+
 	public static void main(String[] args) throws IOException {
 
-		WebServer webServer = new WebServer(SERVER_NAME, PORT, SESSION_TIMEOUT_SECS, LOG_FOLDER);
+		WebServer webServer = new WebServer(SERVER_NAME, PORT, SESSION_TIMEOUT_SECS, LOG_FOLDER, DEBUG_MODE);
 		// Adding controllers for a specified URLs
 		webServer.addController("json", new JsonTestController());
 		webServer.addController("xml", new XmlTestController());
@@ -39,6 +41,7 @@ public class Main {
 		webServer.addController("redirect", new RedirectTestController());
 		webServer.addController("", new MainPageController());
 		webServer.start();
+		
 
 	}
 
